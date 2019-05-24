@@ -6,17 +6,6 @@ package tools;
  * and open the template in the editor.
  */
 
-
-import controllers.LocationController;
-import daos.CountryDAO;
-import daos.LocationDAO;
-import daos.NewDAO;
-import daos.NewLocationDAO;
-import daos.RegionDAO;
-import icontrollers.ILocationController;
-import idaos.ICountryDAO;
-import idaos.ILocationDAO;
-import idaos.IRegionDAO;
 import java.math.BigDecimal;
 import models.Country;
 import models.Department;

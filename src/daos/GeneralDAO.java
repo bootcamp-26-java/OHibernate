@@ -5,7 +5,6 @@
  */
 package daos;
 
-import idaos.ILocationDAO;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +18,14 @@ import org.hibernate.Transaction;
  *
  * @author HP
  */
-public class NewDAO<T> {
+public class GeneralDAO<T> {
 
     private SessionFactory factory;
     private Session session;
     private Transaction transaction;
     T t;
-    
-    public NewDAO(SessionFactory factory, Class<T> type) {
+
+    public GeneralDAO(SessionFactory factory, Class<T> type) {
         this.factory = factory;
         try {
             this.t = type.newInstance();
@@ -59,10 +58,10 @@ public class NewDAO<T> {
         transaction = session.beginTransaction();
         String hql = "FROM " + t.getClass().getSimpleName();
         if (!keyword.equals("")) {
-            hql+=" WHERE ";
+            hql += " WHERE ";
             for (Field field : t.getClass().getDeclaredFields()) {
                 if (!field.getName().contains("UID") && !field.getName().contains("List")) {
-                    hql += field.getName() + " LIKE '%"+keyword+"%' OR ";
+                    hql += field.getName() + " LIKE '%" + keyword + "%' OR ";
                 }
             }
             hql = hql.substring(0, hql.lastIndexOf("OR"));

@@ -5,9 +5,8 @@
  */
 package controller;
 
-import daos.RegionDAO;
+import daos.GeneralDAO;
 import icontrollers.IRegionController;
-import idaos.IRegionDAO;
 import java.math.BigDecimal;
 import java.util.List;
 import models.Region;
@@ -19,10 +18,10 @@ import org.hibernate.SessionFactory;
  */
 public class RegionController implements IRegionController {
 
-    private IRegionDAO rdao;
+    private GeneralDAO gdao;
 
     public RegionController(SessionFactory factory) {
-        rdao = new RegionDAO(factory);
+        gdao = new GeneralDAO(factory, Region.class);
     }
 
     @Override
